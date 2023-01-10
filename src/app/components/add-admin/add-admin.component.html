@@ -1,0 +1,41 @@
+
+    <form [formGroup]="addAdminForm" novalidate>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Admin Name:</mat-label>
+            <input type="text" matInput placeholder="Enter Name" formControlName="name" pattern="[a-zA-Z ]*" value="" required/>
+            <!-- <mat-error>{{ firstNameError }}</mat-error> -->      
+          <mat-error *ngIf="errorHandling('name', 'required')">Name is required</mat-error>
+          <mat-error *ngIf="errorHandling('name', 'maxlength')">Name is too Long max 20 Char</mat-error>
+          <mat-error *ngIf="errorHandling('name', 'minlength')">Name is too short min 5 Char</mat-error>
+          <mat-error *ngIf="errorHandling('name', 'pattern')">Value must be alphabets</mat-error>   
+        </mat-form-field>
+       
+       
+         <!-- Email -->
+         <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email:</mat-label>
+            <input type="email" matInput placeholder="Enter Email" formControlName="email" value="" required/>
+            <!-- <mat-error *ngIf="errorHandling('email', 'required')">Email is required</mat-error> -->
+            <mat-error *ngIf="errorHandling('email', 'required')">Email is required</mat-error>        
+            <mat-error *ngIf="errorHandling('email', 'pattern')">Please provide valid Mail id. Eg:abc@gmail.com</mat-error>   
+           
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label> Password: </mat-label>
+            <input  [type]="hide ? 'password' : 'text'" matInput placeholder ="Enter Password" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide">
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+            <mat-error *ngIf="errorHandling('password','required')"> Password is Required</mat-error>
+            <mat-error *ngIf="errorHandling('password','pattern')"> Use 8 or more characters with a mix of letters, numbers & symbols</mat-error>
+          </mat-form-field>
+          <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
+    
+      </form>
+   
+
+       
+      
+

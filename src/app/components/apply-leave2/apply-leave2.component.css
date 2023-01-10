@@ -1,0 +1,36 @@
+.mat-calendar-body-cell-content{
+    background-color: yellowgreen;
+}
+.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+  }
+  .display-none{
+    display: none;
+  }
+  .button1{
+    /* background-color:aliceblue; */
+    background-color: transparent;
+    color:rgb(63, 81, 181);
+    
+    border: 0;
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    padding: 3px;
+    margin: 10px;
+    
+  }
+  h1{
+    font-size: 16px;
+    font-weight:bold
+  }
+  .head{
+    font-size: 16px;
+    font-weight:bold
+}
+.detail{
+    font-size: 14px;
+    font-weight:normal
+
+}

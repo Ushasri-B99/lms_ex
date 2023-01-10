@@ -1,0 +1,124 @@
+<!-- <h2 mat-dialog-title>Add New Employee</h2> -->
+<h2 class="dialog-heading w-100 p-2">Update Employee</h2>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="updateEmpForm" novalidate>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>First Name:</mat-label>
+        <input type="text" matInput placeholder="Enter Firstname" formControlName="firstName" value="" pattern="[a-zA-Z ]*" required/>
+        <!-- <mat-error>{{ firstNameError }}</mat-error> -->      
+      <mat-error *ngIf="errorHandling('firstName', 'required')">Firstname is required</mat-error>
+      <mat-error *ngIf="errorHandling('firstName', 'pattern')">Value must be alphabets</mat-error>   
+      <mat-error *ngIf="errorHandling('firstName', 'maxlength')">Firstname is too Long max 20 Char</mat-error>
+      <mat-error *ngIf="errorHandling('firstName', 'minlength')">Firstname is too short min 5 Char</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Last Name:</mat-label>
+        <input type="text" matInput placeholder="Enter lastname" formControlName="lastName" value="" pattern="[a-zA-Z ]*" required/>
+        <mat-error *ngIf="errorHandling('lastName', 'required')">LastName is required</mat-error>
+      <mat-error *ngIf="errorHandling('lastName', 'pattern')">Value must be alphabets</mat-error>   
+      <mat-error *ngIf="errorHandling('lastName', 'maxlength')">LastName is too Long max 20 Char</mat-error>
+      <mat-error *ngIf="errorHandling('lastName', 'minlength')">LastName is too short min 5 Char</mat-error>
+
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Employee Id</mat-label>
+        <input type="text" matInput placeholder="Enter Firstname" formControlName="empId" value="" required/>
+        <!-- <mat-error>{{ firstNameError }}</mat-error> -->      
+      <mat-error *ngIf="errorHandling('empId', 'required')">Employee Id is required</mat-error>
+      <mat-error *ngIf="errorHandling('empId', 'maxlength')">Employee Id is too Long max 20 Char</mat-error>
+      <mat-error *ngIf="errorHandling('empId', 'minlength')">Employee Id is too short min 5 Char</mat-error>
+      <!-- <mat-error *ngIf="errorHandling('firstName', 'pattern')">Value must be alphabets</mat-error>    -->
+    </mat-form-field>
+     <!-- Email -->
+     <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email:</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email" value="" required/>
+        <!-- <mat-error *ngIf="errorHandling('email', 'required')">Email is required</mat-error> -->
+        <mat-error *ngIf="errorHandling('email', 'required')">Email is required</mat-error>        
+        <mat-error *ngIf="errorHandling('email', 'pattern')">Please provide valid Mail id. Eg:abc@gmail.com</mat-error>   
+        <!-- <mat-error *ngIf="!createUserForm.controls['email'].valid">
+            Email is required
+        </mat-error> -->
+      </mat-form-field>
+      <!-- Gender -->
+      <div class="misc-bottom-padding  " >
+        <mat-label>Gender:</mat-label>
+        <mat-radio-group aria-label="Select an option" formControlName="gender"  appearance="outline" required>
+          <mat-radio-button color="primary" value="Male">Male</mat-radio-button> &nbsp; &nbsp;
+          <mat-radio-button color="primary" value="Female">Female</mat-radio-button>&nbsp; &nbsp;
+          <mat-radio-button color="primary" value="Others">Others</mat-radio-button>
+          <mat-error *ngIf="errorHandling('gender', 'required')">Gender is required</mat-error>
+          
+        </mat-radio-group>
+      </div>
+      <!-- <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date Of Birth:</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob"/>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+            Date Of Birth is required
+        </mat-error> --
+       
+      </mat-form-field> -->
+      <!-- Class -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="tel"  placeholder="Enter Phoneno" formControlName="phno" value="" required/>
+        <!-- <mat-error *ngIf="errorHandling('phno', 'maxlength')">Length Must be 10 digits</mat-error>  -->
+        
+        <!-- <mat-error>{{ phonoErrorMsg }}</mat-error> -->
+        <mat-error *ngIf="errorHandling('phno', 'required')">Phone Number is required</mat-error>
+        <mat-error *ngIf="errorHandling('phno', 'pattern')">Value must be number and length must be 10-digits</mat-error> 
+        <!-- <mat-error *ngIf="createUserForm.controls['phno'].hasError('minlength')">Length is too short. It must be 10 digits</mat-error> -->
+        <mat-error *ngIf="errorHandling('phno', 'maxlength')">Length too long. It must be 10 digits</mat-error> 
+        <mat-error *ngIf="errorHandling('phno', 'minlength')">Length is too short. It must be 10 digits</mat-error>   
+      </mat-form-field>
+      
+  
+      <!-- Add Role -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Role:</mat-label>
+        <input type="text" matInput placeholder="Enter Role" formControlName="role" value="" required pattern="[a-zA-Z ]*"/>
+        <mat-error *ngIf="errorHandling('role', 'required')">Role is required</mat-error>
+        <mat-error *ngIf="errorHandling('role', 'pattern')">Value must be alphabets</mat-error> 
+        <!-- <mat-error *ngIf="errorHandling('role', 'maxlength')">Length too long. It must be 10 digits</mat-error> 
+        <mat-error *ngIf="errorHandling('role', 'minlength')">Length is too short. It must be 10 digits</mat-error>   
+         -->
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Leave Balance:</mat-label>
+        <input type="tel" matInput placeholder="Enter Leave Balance" formControlName="leaveBalance" value="" required/>
+        <mat-error *ngIf="errorHandling('leaveBalance', 'required')">Leave Balance field is required</mat-error>
+        <mat-error *ngIf="errorHandling('leaveBalance', 'pattern')">Enter number</mat-error>  
+        <mat-error *ngIf="errorHandling('leaveBalance', 'maxlength')">Length too long. max 2 </mat-error> 
+        <mat-error *ngIf="errorHandling('leaveBalance', 'minlength')">Length is too short. min 1</mat-error>   
+        
+        <!-- <mat-error *ngIf="!createUserForm.controls['leaveBalance'].valid">
+            Leave Balance is required
+         </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Manager Id</mat-label>
+        <input type="number" matInput placeholder="Enter Manager Id" formControlName="admin_id" value="" required/>
+        <mat-error *ngIf="errorHandling('admin_id', 'required')">Field is required</mat-error>
+       
+        <!-- <mat-error *ngIf="!createUserForm.controls['leaveBalance'].valid">
+            Leave Balance is required
+         </mat-error> -->
+      </mat-form-field>    
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <!-- <div class="button-wrapper d-flex flex-row  justify-content-between "> -->
+    <button mat-flat-button color="primary" (click)="Update()">Update</button>
+    <!-- <button  mat-flat-button color="primary" (click)="reset1()">Reset</button>   -->
+    <button  mat-flat-button  mat-dialog-close color="primary" >Close</button>  
+   
+    <!-- </div> -->
+  <!-- <button mat-button mat-dialog-close>Cancel</button> -->
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

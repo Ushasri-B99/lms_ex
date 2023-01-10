@@ -1,0 +1,80 @@
+ <div class="container">
+    <div class="row">
+        <div class=" col-12 col-lg-8 " > 
+            <!---- <div class="card center "> -->
+             
+              <!-- <app-card> -->
+                  <form [formGroup]="applyLeaveForm" novalidate>   
+                      <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>From Date</mat-label>
+                          <input matInput [matDatepickerFilter]="myFilter" [min]="minDate" [matDatepicker]="picker1" placeholder="Enter Start date" formControlName="fromDate" (dateChange)="date1($event)"/>
+
+                          <!-- <input matInput [matDatepickerFilter]="myFilter" [min]="minDate" [matDatepicker]="picker1" placeholder="Enter Start date" formControlName="fromDate" (dateChange)="date1($event)"/> -->
+                          <mat-hint>MM/DD/YYYY</mat-hint>
+                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                          <mat-datepicker  #picker1></mat-datepicker>
+                        <mat-error *ngIf="errorHandling('fromDate', 'required')">From Date is required</mat-error>
+                        
+                          <!-- <mat-error *ngIf="!createUserForm.controls['fromDate'].valid">
+                              Date Of Birth is required
+                          </mat-error> -->      
+                      </mat-form-field> 
+                     
+                      <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>To Date</mat-label>
+                          <input matInput [matDatepickerFilter]="myFilter" [min]="minDate" [matDatepicker]="picker2" placeholder="Enter end date" formControlName="toDate" (dateChange)="date2($event)"/>
+                          <mat-hint>MM/DD/YYYY</mat-hint>
+                          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                        <mat-error *ngIf="errorHandling('toDate', 'required')">To Date is required</mat-error>
+                  
+                          <!-- <mat-error *ngIf="!createUserForm.controls['toDate'].valid">
+                              Date Of Birth is required
+                          </mat-error> -->
+                         
+                      </mat-form-field> 
+                      <mat-form-field class="example-full-width" appearance="outline" >
+                      <mat-label>Leave Type</mat-label>       
+                          <mat-select >
+                            <mat-option value="ick Leave"> Sick Leave</mat-option>
+                            <mat-option value="Half Day">Half Day</mat-option>
+                            <mat-option value="Casual Leave">Casual Leave</mat-option>
+                            <mat-option value="Maternity Leave">	Maternity Leave </mat-option>
+                            <mat-option value="Others">	Others </mat-option>
+                            <!-- <mat-option value="two">	Paternity Leave </mat-option> -->
+                          </mat-select>
+                      </mat-form-field>
+                  
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>Comment</mat-label>
+                          <input type="text" matInput placeholder="Enter Leave Reason" formControlName="leaveReason" />
+                      </mat-form-field>
+                      
+                             
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>User Id</mat-label>
+                          <input type="tel" matInput placeholder="Enter User Id" formControlName="userId" value="" required/>
+                          <mat-error *ngIf="errorHandling('userId', 'required')">Field is required</mat-error>
+                          <!-- <mat-error *ngIf="errorHandling('leaveBalance', 'pattern')">Enter number</mat-error>  -->
+                          <!-- <mat-error *ngIf="errorHandling('leaveBalance', 'maxlength')">Length too long. max 2 </mat-error> 
+                          <mat-error *ngIf="errorHandling('leaveBalance', 'minlength')">Length is too short. min 1</mat-error>    -->
+                          
+                          <!-- <mat-error *ngIf="!createUserForm.controls['userId'].valid">
+                              Leave Balance is required
+                           </mat-error> -->
+                        </mat-form-field>
+                        <div class="button-wrapper d-flex flex-row  justify-end "> 
+                          <button mat-flat-button color="primary" (click)="onSubmit()">Apply</button>
+                          <!-- <button  mat-flat-button color="primary" (click)="reset1()">Reset</button>   --
+                          <button  mat-flat-button  mat-dialog-close color="primary" >Close</button>  -->
+                         
+                          </div>
+                      </form>
+                  <!-- </div> -->
+          </div>
+       
+        <div class=" col-12 col-lg-4 " style="background-color:aliceblue;">
+            <app-calender></app-calender>
+        </div> 
+    </div>
+ </div>

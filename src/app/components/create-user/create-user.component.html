@@ -1,0 +1,139 @@
+
+
+
+
+
+
+
+<!---_______________________ Duplicate ------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form [formGroup]="createUserForm" (ngSubmit)="submitForm()" novalidate>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>First Name:</mat-label>
+        <input type="text" matInput placeholder="Enter Firstname" formControlName="firstName"  pattern=[A-Za-z] />
+        <!-- <mat-error>{{ firstNameError }}</mat-error> -->
+      <!-- <mat-error *ngIf="errorHandling('firstName', 'required')">
+        You must provide a <strong>name</strong>
+    </mat-error> -->
+        <!-- <mat-error *ngIf="errorHandling('firstName', 'required')">Firstname is required</mat-error>
+        <mat-error *ngIf="errorHandling('firstName', 'pattern')">Enter alphabets only</mat-error> -->
+
+        <!-- <mat-error *ngIf="errorHandling('mycity', 'maxlength')">Limit exceed</mat-error> -->
+
+    <mat-error *ngIf="!createUserForm.controls['firstName'].valid">
+        FirstName is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Last Name:</mat-label>
+        <input type="text" matInput placeholder="Enter lastname" formControlName="lastName" />
+        <mat-error *ngIf="!createUserForm.controls['lastName'].valid">
+            LastName is required
+        </mat-error>
+        
+    </mat-form-field>
+     <!-- Email -->
+     <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email:</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email" />
+        <mat-error *ngIf="errorHandling('email', 'required')">Email is required</mat-error>
+
+        <!-- <mat-error *ngIf="!createUserForm.controls['email'].valid">
+            Email is required
+        </mat-error> -->
+      </mat-form-field>
+      <!-- Gender -->
+      <div class="misc-bottom-padding  " >
+        <mat-label>Gender:</mat-label>
+        <mat-radio-group aria-label="Select an option" formControlName="gender"  appearance="outline">
+          <mat-radio-button color="primary" value="Male">Male</mat-radio-button> &nbsp; &nbsp;
+          <mat-radio-button color="primary" value="Female">Female</mat-radio-button>&nbsp; &nbsp;
+          <mat-radio-button color="primary" value="Others">Others</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Date Of Birth:</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob"/>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+            Date Of Birth is required
+        </mat-error>
+      </mat-form-field>
+      <!-- Class -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="tel"  placeholder="Enter Phoneno" formControlName="phno" length="10" />
+        <!-- <mat-error *ngIf="errorHandling('phno', 'maxlength')">Length Must be 10 digits</mat-error>  -->
+        
+        <!-- <mat-error>{{ phonoErrorMsg }}</mat-error> -->
+        <mat-error *ngIf="errorHandling('phno', 'required')">Phone Number is required</mat-error>
+        <mat-error *ngIf="errorHandling('phno', 'pattern')">Enter number</mat-error> 
+        <mat-error *ngIf="errorHandling('phno', 'maxlength')">Length Must be 10 digits</mat-error> 
+        <mat-error *ngIf="errorHandling('phno', 'minlength')">Length Must be 100 digits</mat-error> 
+        
+        
+      </mat-form-field>
+      
+  
+      <!-- Add Subjects -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Role:</mat-label>
+        <input type="text" matInput placeholder="Enter Role" formControlName="role" />
+        <mat-error *ngIf="!createUserForm.controls['role'].valid">
+           Employee Role is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Leave Balance:</mat-label>
+        <input type="number" matInput placeholder="Enter Leave Balance" formControlName="leaveBalance" />
+        <mat-error *ngIf="!createUserForm.controls['leaveBalance'].valid">
+            Leave Balance is required
+         </mat-error>
+      </mat-form-field>
+     
+      <div class="button-wrapper d-flex flex-row  justify-content-between ">
+        <button mat-flat-button color="primary">Submit</button>
+        <button  mat-flat-button color="primary" (click)="reset1()">Reset</button>  
+        </div>
+      
+      
+  </form>
+ 

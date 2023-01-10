@@ -1,0 +1,39 @@
+.full-width-table {
+  width: 100%;
+}
+.small-table{
+  overflow-x: scroll !important;
+}
+.full-width-table {
+  width: 100%;
+}
+th{
+ 
+ color: white;
+ font-size:18px;
+  background-color: #3f51b5;
+}
+.mat-cell, .mat-footer-cell {
+  font-size: 13px;
+}
+th.mat-header-cell,td {
+  text-align: center !important;
+}
+.mat-header-cell{
+  justify-content: center;
+}
+
+.small-table{
+  overflow-x: scroll !important;
+}
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}
+button {
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  padding: auto
+}
+

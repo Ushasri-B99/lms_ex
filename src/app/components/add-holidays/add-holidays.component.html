@@ -1,0 +1,40 @@
+<h2 class="dialog-heading w-100 p-2">Add New Holiday</h2>
+<mat-dialog-content class="mat-typography">
+  <!-- displayedColumns = [ 'holidayId','holidayName', 'holidayDate', 'actions']; -->
+    <form [formGroup]="holidayForm" novalidate>   
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Holiday Date</mat-label>
+            <input matInput [matDatepickerFilter]="myFilter" [min]="minDate" [max] ="maxDate" [matDatepicker]="picker1" placeholder="Enter holiday date" formControlName="holidayDate"/>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="errorHandling('holidayDate', 'required')">Holiday Date is required</mat-error>
+        </mat-form-field> 
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>holidayName</mat-label>
+            <input type="text" matInput placeholder="Enter Holiday Name" formControlName="holidayName" pattern="[a-zA-Z ]*" value="" required/>
+            <!-- <mat-error>{{ firstNameError }}</mat-error> -->      
+          <mat-error *ngIf="errorHandling('holidayName', 'required')">Firstname is required</mat-error>
+          <mat-error *ngIf="errorHandling('holidayName', 'maxlength')">Firstname is too Long max 20 Char</mat-error>
+          <mat-error *ngIf="errorHandling('holidayName', 'minlength')">Firstname is too short min 5 Char</mat-error>
+          <mat-error *ngIf="errorHandling('holidayName', 'pattern')">Value must be alphabets</mat-error>   
+        </mat-form-field>             
+                     
+                     
+                       <!-- <div class="button-wrapper d-flex flex-row  justify-content-between"> 
+                          <button mat-flat-button color="primary" (click)="addHoliday()">Add</button>
+                          <button  mat-flat-button color="primary" mat-dialog-close id="clearBtn">Close</button>   
+                          <button  mat-flat-button color="primary" type="reset" id="clearBtn">Clear</button>   
+
+                          </div> -->
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-flat-button color="primary" (click)="addHoliday()">Add</button>
+    <button  mat-flat-button color="primary" mat-dialog-close >Close</button>   
+    <!-- <button  mat-flat-button color="primary" type="reset" id="clearBtn">Clear</button>    -->
+
+    <!-- <button mat-flat-button color="primary" (click)="add()">Add</button>
+    <button  mat-flat-button  mat-dialog-close color="primary" >Close</button>   -->
+</mat-dialog-actions>
+         

@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar></mat-toolbar>
+    <mat-nav-list>
+      <!-- <span *ngIf="loginService.isUserLoggedIn()" class="center">{{sessionUsername}}</span> -->
+
+      <a *ngIf="loginService.isAdminLoggedIn()" routerLink="/leaveApplications" mat-list-item >Leave Applications</a>
+      <a *ngIf="loginService.isAdminLoggedIn() " routerLink="/employees" mat-list-item >Employees</a>
+      <a *ngIf="!loginService.isAdminLoggedIn() && !loginService.isUserLoggedIn()" routerLink="/admin-login" mat-list-item >Admin Login</a>  
+      <a *ngIf="loginService.isAdminLoggedIn()" routerLink="/holidays" mat-list-item >Holidays List</a>
+      <a *ngIf="loginService.isAdminLoggedIn()" routerLink="/logout" mat-list-item >Logout</a>
+      
+      <a *ngIf="!loginService.isUserLoggedIn() && !loginService.isAdminLoggedIn()" routerLink="/login" mat-list-item >User Login</a>
+      
+      <a *ngIf="loginService.isUserLoggedIn()" routerLink="/employee-view" mat-list-item >Leave Applications</a>
+      <a *ngIf="loginService.isUserLoggedIn()" routerLink="/applyLeave" mat-list-item >Apply Leave</a>
+      <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myProfile" mat-list-item >My Profile</a>
+      <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" mat-list-item >Logout</a>
+  
+      <!-- <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{item | titlecase}} </a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="d-flex flex-row justify-content-between">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button
+        (click)="drawer.toggle()"*ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+     
+        <span style="text-align: center;">ABC IT SOLUTIONS</span>
+        <!-- <span *ngIf="loginService.isUserLoggedIn()" class="center">{{sessionUsername}}</span> -->
+     
+      
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <!-- Add Content INFOTECH Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

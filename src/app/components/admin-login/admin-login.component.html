@@ -1,0 +1,33 @@
+
+<form [formGroup]="adminLoginForm" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline">
+      <mat-label> User Name: </mat-label>
+      <input type="text" matInput placeholder ="Enter UserName" formControlName="username">
+      <mat-error *ngIf="errorHandling('username','required')"> UserName is Required</mat-error> 
+      <mat-error *ngIf="errorHandling('username','maxlength')"> UserName is long max 10Chars</mat-error>  
+      <mat-error *ngIf="errorHandling('username','minlength')"> UserName is short min 5Char </mat-error>   
+      <!-- <max-error>{{userNameError}}</max-error> -->
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label> Password: </mat-label>
+      <input  [type]="hide ? 'password' : 'text'" matInput placeholder ="Enter Password" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+      <mat-error *ngIf="errorHandling('password','required')"> Password is Required</mat-error>
+      <mat-error *ngIf="errorHandling('password','pattern')"> Use 8 or more characters with a mix of letters, numbers & symbols</mat-error>
+    </mat-form-field>
+    <a routerLink="/admin-register" mat-list-item >Register New Admin</a>
+    <!-- <button class="button1" (click)="register()" >Admin Register</button> -->
+    <!-- <a (click)="register()" mat-list-item >Register New Admin</a> -->
+
+  
+    <div class="button-wrapper d-flex flex-row justify-content-between">
+      <button mat-flat-button color="primary">Submit</button>
+      <!-- <a href="http://www.google.com" mat-menu-item>Forget Password</a>  -->
+    </div>
+  </form>
+  
+  

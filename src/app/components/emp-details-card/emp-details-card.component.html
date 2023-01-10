@@ -1,0 +1,51 @@
+
+<h2 mat-dialog-title style="text-align: center;">{{rowData.firstName + " "+ rowData.lastName|titlecase}}</h2>
+
+<mat-dialog-content >
+    <div class="card container p-3" style="background-color:azure">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Employee Id: 
+            <span class="detail" style="font-size: 13px;">{{rowData.empId|uppercase}}</span> </h1>
+          </div>
+          <!-- //userId firstName lastName  gender email role phoneNumber leave_bal adminId adminName leavesList -->
+
+
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Gender: 
+            <span class="detail">{{rowData.gender|titlecase}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Email: 
+            <span class="detail">{{rowData.email}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Role: 
+            <span class="detail">{{rowData.role|titlecase}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">PhoneNumber: 
+            <span class="detail">{{rowData.phoneNumber}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Leave_bal: 
+            <span class="detail">{{rowData.leave_bal}}</span> </h1>
+          </div>
+      </div>    
+   </div>    
+</mat-dialog-content>
+<!-- <button class="mat-raised-button mat-primary m-2" mat-dialog-close>Close</button> -->
+
+<mat-dialog-actions class="d-flex flex-row justify-content-center p-3">  
+  
+    <div class="d-flex flex-row justify-content-center" id="buttonDiv">
+        <!-- <button class="mat-raised-button mat-primary m-2"(click)="updateEmp(rowData.userId)">Update</button>     -->
+        <button class="mat-raised-button mat-primary m-2"(click)="removeEmp(rowData.userId)">Remove</button>    
+        <button class="mat-raised-button mat-primary m-2" mat-dialog-close (click)="closed()">Close</button>
+    </div>
+    <!-- <ng-template #show id="closeBtnDiv">
+        <button class="mat-raised-button mat-primary" mat-dialog-close>Close</button>
+    </ng-template> -->
+   
+    <!-- <button class="mat-raised-button mat-primary"(click)="save()">Save</button> -->
+</mat-dialog-actions>

@@ -1,0 +1,84 @@
+<!-- <h1 style="color:black; font-weight: bold; font-size: 25px;">Create Student</h1>
+<div class="d-flex flex-row justify-content-center" style="width: 400px;">
+  <form  [formGroup]="addForm">
+    <div>
+      <mat-form-field class="full-width" appearance="outline">
+          <mat-label>FirstName</mat-label>
+          <input formControlName="firstName" matInput [type]="'firstName'" required />
+          <mat-error *ngIf="!addForm.controls['firstName'].valid">
+            FirstName is required
+          </mat-error>
+      </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>LastName</mat-label>
+        <input formControlName="lastName" matInput [type]="'lastName'" required />
+        <mat-error *ngIf="!addForm.controls['lastName'].valid">
+            LastName is required
+        </mat-error>
+    </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput [type]="'email'" required />
+      <mat-error *ngIf="!addForm.controls['email'].valid">
+        Email is required
+      </mat-error>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input formControlName="phno" matInput [type]="'phno'" required />
+      <mat-error *ngIf="!addForm.controls['phno'].valid">
+        Phone Number is required
+      </mat-error>
+  </mat-form-field>
+</div>
+
+<div>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Role</mat-label>
+        <input formControlName="role" matInput [type]="'role'" required />
+        <mat-error *ngIf="!addForm.controls['role'].valid">
+          Role is required
+        </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>LeaveBalance</mat-label>
+        <input formControlName="leaveBalance" matInput [type]="'leaveBalance'" required />
+        <mat-error *ngIf="!addForm.controls['leaveBalance'].valid">
+            Leave Balance is required
+        </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Date</mat-label>
+        <input formControlName="date" placeholder="Date"  matInput [matDatepicker]="picker1"/>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+  </div>
+
+<div class= "d-flex flex-row p-3 justify-content-auto">
+    <button type="submit" class="btn btn-success mr-2" (click)="onSubmit()">Submit</button>
+    <button  class="btn btn-success ml-2" (click)="addForm.reset()">Cancel</button>
+    </div>
+  </form>
+ 
+</div> 
+
+<!-- <div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newStudent()">Add</button>
+</div> --> -->

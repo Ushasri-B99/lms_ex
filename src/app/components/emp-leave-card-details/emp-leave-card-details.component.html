@@ -1,0 +1,68 @@
+
+
+<h2 mat-dialog-title style="text-align: center;">{{rowData.username|titlecase}}</h2>
+
+<mat-dialog-content >
+    <div class="card container p-3 " style="background-color:aliceblue">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Name:
+            <span class="detail">{{rowData.username}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Applied On: 
+            <span class="detail" style="font-size: 13px;">{{rowData.createdAt|date: 'dd/MM/yyyy hh:mm a'}}</span> </h1>
+          </div>
+<!-- ['username', 'leaveReason','fromDate','toDate','createdAt','adminRemark','status','leaveType','noOfDays','lop']; -->
+
+          <!-- <div class="col-12 col-lg-6">
+            <h1 class="heading">Leave Reason: 
+            <span class="detail">{{rowData.leaveReason|titlecase}}</span> </h1>
+          </div> -->
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">From-Date: 
+            <span class="detail">{{rowData.fromDate|date: 'dd-MM-yyyy'}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">To Date: 
+            <span class="detail">{{rowData.toDate|date: 'dd-MM-yyyy'}}</span> </h1>
+          </div>
+          <!-- <div class="col-12 col-lg-6">
+            <h1 class="heading">Admin Remark: 
+            <span class="detail">{{rowData.adminRemark|titlecase}}</span> </h1>
+          </div> -->
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Status: 
+            <span class="detail">{{rowData.status|titlecase}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Leave Type: 
+            <span class="detail">{{rowData.leaveType|titlecase}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">No of Day('s)
+                <span class="detail">{{rowData.noOfDays}}</span> </h1>
+          </div>
+          <div class="col-12 col-lg-6">
+            <h1 class="heading">Loss Of Pay: 
+            <span class="detail">{{rowData.lop}}</span> </h1>
+          </div>    
+      </div>
+    
+   </div>   
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex flex-row justify-content-center p-3">  
+  
+    <div *ngIf="rowData.status=='PENDING' else show" class="d-flex flex-row justify-content-center" id="buttonDiv">
+        <!-- <button class="mat-raised-button mat-success m-2"(click)="edit(rowData.leaveId)">Edit</button>     -->
+        <button class="mat-raised-button mat-warn m-2"(click)="deleteReq(rowData.leaveId)">Delete</button>    
+        <button class="mat-raised-button mat-primary m-2" mat-dialog-close>Close</button>
+    </div>
+    <ng-template #show id="closeBtnDiv">
+        <button class="mat-raised-button mat-primary" mat-dialog-close>Close</button>
+    </ng-template>
+   
+    <!-- <button class="mat-raised-button mat-primary"(click)="save()">Save</button> -->
+</mat-dialog-actions>

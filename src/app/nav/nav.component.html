@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar></mat-toolbar>
+<!-- menuItems = ['leave applications', 'apply leave', 'employees', 'sign out']; -->
+
+    <mat-nav-list>
+      <a *ngIf="loginService.isUserLoggedIn()" routerLink="/leave applications" mat-list-item >Leave Applications</a>
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/apply leave" mat-list-item >Apply Leave</a>
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/employees" mat-list-item >Employees</a>
+    <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" mat-list-item >Login</a>
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" mat-list-item >LogOut</a>
+  
+      <!-- <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{item | titlecase}} </a> -->
+    </mat-nav-list>
+    
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon"></mat-icon>
+      </button>
+      <span>Leave Management System </span>
+      <span *ngIf="loginService.isUserLoggedIn()">{{sessionUsername}}</span>
+      <!-- <span id="name" *ngFor="let user of userList">
+        <p *ngIf = "sessionUsername == user['empId']">
+          {{user['firstName'] + " "+ user['lastName']}}
+        </p>
+      </span> -->
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

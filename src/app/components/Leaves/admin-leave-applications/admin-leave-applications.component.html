@@ -1,0 +1,116 @@
+<div class="grid-container">
+  <!-- <h1 class="mat-h1">Dashboard</h1> -->
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+   
+    <!------------------------------------------------------------>
+    <!-- <mat-grid-tile *ngFor="let i of ['All Leaves','Pending Leaves', 'Approved Leaves', 'Rejected Leaves']" [colspan]="( cardLayout | async )?.miniCard.cols"
+    [rowspan]="( cardLayout | async )?.miniCard.rows">
+    <app-card title="{{i}}"><div #{{i}}>Mini Card Content Here</div></app-card>
+  </mat-grid-tile> -->
+    <!------------------------------------------------------------>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.miniCard.cols"
+    [rowspan]="( cardLayout | async )?.miniCard.rows">
+    <button (click)="getAllLeaves()"><app-card title="All Leaves" #allLeavesTempRef><div >
+      <h1>{{allLeavesCountVar}}</h1>
+
+    </div></app-card></button>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="( cardLayout | async )?.miniCard.cols"
+  [rowspan]="( cardLayout | async )?.miniCard.rows">
+  <button (click)="pendingLeaves()"><app-card title="Pending Leaves" #pendingLeavesTempRef>
+    <div >
+      <h2> {{pendingLeavesCount}}</h2>
+    </div>
+  </app-card>
+</button>
+</mat-grid-tile>
+<mat-grid-tile [colspan]="( cardLayout | async )?.miniCard.cols"
+[rowspan]="( cardLayout | async )?.miniCard.rows">
+<button (click)="approvedLeaves()"><app-card title="Approved Leaves" #approvedLeavesTempRef>
+  <div >
+   <h2> {{approvedLeavesCountVar}}</h2>
+  </div></app-card></button>
+</mat-grid-tile>
+<mat-grid-tile [colspan]="( cardLayout | async )?.miniCard.cols"
+[rowspan]="( cardLayout | async )?.miniCard.rows">
+<button (click)="rejectedLeaves()"><app-card title="Rejected Leaves" #rejectedLeavesTempRef>
+  <div >
+    <h2>{{rejectLeavesCountVar}}</h2>
+  </div></app-card></button>
+</mat-grid-tile>
+<!------------------------------------------------------------------------------------------------------------>
+  <!-- <mat-grid-tile  [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">  
+      <div class=" date-card">
+        <form [formGroup]="leavesInRangeForm" novalidate>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>From Date</mat-label>
+              <input matInput [matDatepicker]="picker1" placeholder="Enter from date" formControlName="fromDate"/>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error *ngIf="errorHandling('fromDate', 'required')">From Date is required</mat-error>
+              <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+                  Date Of Birth is required
+              </mat-error> --      
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>To Date</mat-label>
+              <input matInput [matDatepicker]="picker2" placeholder="Enter to date" formControlName="toDate"/>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+              <mat-error *ngIf="errorHandling('fromDate', 'required')">To Date is required</mat-error>
+
+              <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+                  Date Of Birth is required
+              </mat-error> --         
+            </mat-form-field>
+          <div class="button-wrapper d-flex flex-row  justify-content-center ">
+              <button mat-flat-button color="primary" (click) = "submit()">Submit</button>
+              <!-- <button  mat-flat-button color="primary" (click)="reset1()">Reset</button>   --
+              <!-- <button  mat-flat-button  mat-dialog-close color="primary" >Close</button>   --
+      </div>                          
+        </form>
+      </div>
+    
+  </mat-grid-tile> -->
+
+
+    <!--Charts-->
+    <!-- <mat-grid-tile *ngFor="let i of [5, 6, 7, 8]" [colspan]="( cardLayout | async )?.chart.cols"
+      [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Card {{i}}"><div>Chart Content Here</div></app-card>
+    </mat-grid-tile> -->
+    <!--Table-->
+
+    <!-- <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="Card 9"><div>Table Content Here</div></app-card>
+    </mat-grid-tile> -->
+
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows" class="mat-grid-tile-content">
+      
+      <app-card  class="dashboard-card-table-content display-none " id="pending" #pendingTabTempRef>
+        <app-pending-leaves></app-pending-leaves>
+      </app-card>
+      <app-card class="dashboard-card-table-content display-none" id="approve" #approvedTabTempRef>
+        <app-approved-leaves ></app-approved-leaves>       
+      </app-card>
+      <app-card class="dashboard-card-table-content" id="all" #allLeavesTabTempRef>      
+        <app-leaves-table2 ></app-leaves-table2>       
+        <!-- <app-apply-leave-table></app-apply-leave-table> -->
+      </app-card>
+      <app-card class="dashboard-card-table-content display-none" id="reject" #rejectedTabTempRef>
+       <app-rejected-leaves></app-rejected-leaves>
+      </app-card>
+   </mat-grid-tile>
+   
+  
+  <!-- <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+    <app-card class="dashboard-card-table-content " #rejectedTabTempRef>
+     <app-rejected-leaves></app-rejected-leaves>
+    </app-card>
+ </mat-grid-tile> -->
+  </mat-grid-list>
+ 
+ </div>

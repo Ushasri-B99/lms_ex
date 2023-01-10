@@ -1,0 +1,209 @@
+
+<div class="container center" >
+  <!-- <h2> Leave Applications</h2> -->
+    <div class="row mt-3 ">
+      <div class="col-12">
+        <h2> Leave Applications</h2>
+        <!-- <mat-form-field class="example-full-width" appearance="outline">
+          <input type="search" matInput placeholder="Search By Id" formControlName="searchInput" value=""/>
+         </mat-form-field> -->
+      </div>
+
+    </div> 
+    <!-- <div class="row " style="border: 1px solid blue ">
+      <div class="col-12" >   
+            <form [formGroup]="leavesInRangeForm" novalidate>
+              <div class="container" style="border: 1px solid aqua">
+                <div class="row" style="border: 1px solid pink">
+                  <div class="col-5 p-0" style="border: 1px solid black">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>From Date</mat-label>
+                      <input matInput [matDatepicker]="picker1" placeholder="Enter from date" formControlName="fromDate"/>
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                      <mat-error *ngIf="errorHandling('fromDate', 'required')">From Date is required</mat-error>
+                      <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+                          Date Of Birth is required
+                      </mat-error> --      
+                    </mat-form-field>
+                  </div>
+                  <div class="col-5  ">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>To Date</mat-label>
+                      <input matInput [matDatepicker]="picker2" placeholder="Enter to date" formControlName="toDate"/>
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                      <mat-error *ngIf="errorHandling('fromDate', 'required')">To Date is required</mat-error>
+        
+                      <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+                          Date Of Birth is required
+                      </mat-error> --         
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2  ">
+                    <div class="button-wrapper d-flex flex-row  justify-content-center ">
+                        <button mat-flat-button color="primary" (click) = "leavesInrange()">Submit</button>
+                        <!-- <button  mat-flat-button color="primary" (click)="reset1()">Reset</button>   --
+                        <!-- <button  mat-flat-button  mat-dialog-close color="primary" >Close</button>   --
+                    </div> 
+                  </div>    
+                </div> 
+              </div>                     
+            </form>
+       </div>  
+        
+    </div> -->
+    <div class="row ">       
+            <form class="center d-flex flex-row justify-content-center p-1 mb-1"  [formGroup]="leavesInRangeForm" novalidate>
+              <div class="col-4 m-1" > 
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>From Date</mat-label>
+                      <input matInput [matDatepicker]="picker1" [matDatepickerFilter]="myFilter" [min]="minDate" [max]="maxDate" placeholder="Enter from date" formControlName="fromDate"/>
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                      <mat-error *ngIf="errorHandling('fromDate', 'required')">From Date is required</mat-error>
+                      <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+                          Date Of Birth is required
+                      </mat-error> -->      
+                    </mat-form-field>
+              </div>
+              <div class="col-4 m-1  ">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>To Date</mat-label>
+                      <input matInput [matDatepicker]="picker2"[matDatepickerFilter]="myFilter" [min]="leavesInRangeForm.value.fromDate" [max]="maxDate" placeholder="Enter to date" formControlName="toDate"/>
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                      <mat-error *ngIf="errorHandling('fromDate', 'required')">To Date is required</mat-error>
+        
+                      <!-- <mat-error *ngIf="!createUserForm.controls['dob'].valid">
+                          Date Of Birth is required
+                      </mat-error> -->         
+                    </mat-form-field>
+              </div>
+                  <div class="col-2 m-1 ">
+                    <div class="button-wrapper"> 
+                        <button mat-flat-button color="primary" (click) = "leavesInrangeSubmit()">Submit</button>
+                    </div> 
+                  </div>                                                
+            </form>     
+   </div>
+    <div class="row mb-0"> 
+        <div class="col-12 ">
+          <!-- <mat-toolbar class="p-0 d-flex flex-row justify-content-between"> -->
+            <!-- <button  class="button1" id="allBtn" (click)="getAllLeaves()"> All</button>
+            <button class="button1" id="pendingBtn" (click)="pendingLeaves()">Pending</button>
+            <button  class="button1" id="approvedBtn" (click)="approvedLeaves()">Approved</button>
+            <button class="button1" id="rejectedBtn" (click)="rejectedLeaves()">Rejected</button> -->
+            <button mat-flat-button class="button3 m-2 button2" id="allBtn" (click)="getAllLeaves()"> All</button>
+            <button mat-flat-button class="button3 m-2" id="pendingBtn" (click)="pendingLeaves()">Pending</button>
+            <button mat-flat-button class="button3 m-2" id="approvedBtn" (click)="approvedLeaves()">Approved</button>
+            <button mat-flat-button class="button3 m-2" id="rejectedBtn" (click)="rejectedLeaves()">Rejected</button>
+          <!-- </mat-toolbar>     mat-raised-button       -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div  class="dashboard-card-table-content display-none " id="pending" #pendingTabTempRef>
+                <app-pending-leaves></app-pending-leaves>
+            </div>
+            <div class="dashboard-card-table-content display-none" id="approve" #approvedTabTempRef>
+                <app-approved-leaves ></app-approved-leaves>       
+            </div>
+            <div class="dashboard-card-table-content" id="all" #allLeavesTabTempRef>      
+                <app-leaves-table2></app-leaves-table2>       
+                <!-- <app-apply-leave-table></app-apply-leave-table> -->
+            </div>
+            <div class="dashboard-card-table-content display-none" id="reject" #rejectedTabTempRef>
+               <app-rejected-leaves></app-rejected-leaves>
+            </div>
+            <div class="dashboard-card-table-content display-none" id="leavesinrangeId" #rejectedTabTempRef>
+                <div class="mat-elevation-z8 small-table" id="tableDivv3">
+                    <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource" matSort #leaveTbSort="matSort">
+                     
+                      <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header >Name</th>
+                        <td mat-cell *matCellDef="let row"  >{{row.username}}</td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="leaveReason">
+                        <th mat-header-cell  *matHeaderCellDef mat-sort-header></th>
+                        <td mat-cell *matCellDef="let row"   ></td>
+                      </ng-container>
+                      <ng-container matColumnDef="fromDate">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let row" ></td>
+                      </ng-container>
+                      <ng-container matColumnDef="toDate">
+                        <th mat-header-cell *matHeaderCellDef ></th>
+                        <td mat-cell *matCellDef="let row" ></td>
+                      </ng-container>
+                      <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Applied On</th>
+                        <td mat-cell *matCellDef="let row" >{{row.createdAt|date: 'dd/MM/yyyy hh:mm a'}}</td>
+                      </ng-container>
+                    
+                      <ng-container matColumnDef="leaveType">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Leave Type</th>
+                        <td mat-cell *matCellDef="let row" >{{row.leaveType|titlecase}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="noOfDays">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Days</th>
+                        <td mat-cell *matCellDef="let row" >{{row.noOfDays}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                        <td mat-cell *matCellDef="let row" >{{row.status|titlecase}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="adminRemark">
+                        <th mat-header-cell *matHeaderCellDef ></th> <!--Manager Remark {{row.adminRemark|titlecase}}-->
+                        <td mat-cell *matCellDef="let row" ></td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="lop">
+                        <th mat-header-cell *matHeaderCellDef ></th>
+                        <td mat-cell *matCellDef="let row" ></td>
+                      </ng-container>
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell  *matHeaderCellDef > Actions </th>
+                        <td mat-cell *matCellDef="let row" >
+                            <!-- <button mat-raised-button color="primary" (click)="viewLeaves(row)">View Details</button>  -->
+                            <button class="button1" (click)="viewLeaves(row)">View Details</button> 
+                          
+                          </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;">      
+                    </table>
+                    <tr>     
+                      </tr>
+                    <mat-paginator #paginator
+                        [length]="dataSource?.data?.length"
+                        [pageIndex]="0"
+                        [pageSize]="10"
+                        [pageSizeOptions]="[5, 10]"
+                        aria-label="Select page">
+                    </mat-paginator>
+                  </div>
+                  <div id="emptyDivv3" style="text-align: center;" class="display-none">
+                    <br>
+                    <div class="card m-3 p-3">
+                      <h2 > No Leaves were applied on these days</h2>
+                  </div>
+                  </div>
+             </div>
+        </div>
+    </div>
+
+ 
+  
+    
+   
+
+  
+  
